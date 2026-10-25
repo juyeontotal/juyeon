@@ -549,9 +549,9 @@
         }
 
         // 스크립트 맨 아래에 있던 사이트 첫 접속 시 실행 부분을 찾아 아래 코드로 변경
-        document.addEventListener('DOMContentLoaded', () => {
-            handleUrlRoute();
-            loadPosts(); // 로컬스토리지 대신 서버에서 불러오기 실행
+        document.addEventListener('DOMContentLoaded', async () => {
+            await loadPosts(); // 1. 서버에서 게시물 데이터를 전부 가져올 때까지 기다림
+            handleUrlRoute();  // 2. 데이터가 완벽히 준비된 후 주소에 맞는 게시물 화면 띄움
         });
 
         // --- 2. SPA 라우팅 (URL 공유 기능 적용) ---
