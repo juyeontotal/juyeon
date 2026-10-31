@@ -621,7 +621,6 @@
                 const date = new Date(post.date);
                 document.getElementById('detail-date').innerHTML = `<i class="far fa-clock mr-1"></i> ${date.getFullYear()}년 ${date.getMonth()+1}월 ${date.getDate()}일`;
                 
-                document.getElementById('detail-image').src = post.image;
                 document.getElementById('detail-content').innerHTML = post.content || `<p>${post.summary}</p>`;
                 
                 // navigate('post-detail') 대신 직접 제어 (URL 덮어쓰기 방지)
