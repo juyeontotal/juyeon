@@ -359,6 +359,10 @@
                     <p id="detail-date" class="text-gray-500 text-sm"><i class="far fa-clock mr-1"></i> 작성일</p>
                 </div>
 
+                <div class="mb-12 rounded-2xl overflow-hidden bg-gray-50">
+                    <img id="detail-image" src="" alt="대표 이미지" class="w-full object-cover max-h-[500px]">
+                </div>
+
                 <div id="detail-content" class="blog-content text-gray-800 text-lg"></div>
                 
                 <div class="mt-16 text-center border-t pt-10">
@@ -621,6 +625,7 @@
                 const date = new Date(post.date);
                 document.getElementById('detail-date').innerHTML = `<i class="far fa-clock mr-1"></i> ${date.getFullYear()}년 ${date.getMonth()+1}월 ${date.getDate()}일`;
                 
+                document.getElementById('detail-image').src = post.image;
                 document.getElementById('detail-content').innerHTML = post.content || `<p>${post.summary}</p>`;
                 
                 // navigate('post-detail') 대신 직접 제어 (URL 덮어쓰기 방지)
