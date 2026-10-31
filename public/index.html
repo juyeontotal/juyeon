@@ -359,9 +359,7 @@
                     <p id="detail-date" class="text-gray-500 text-sm"><i class="far fa-clock mr-1"></i> 작성일</p>
                 </div>
 
-                <div class="mb-12 rounded-2xl overflow-hidden bg-gray-50">
-                    <img id="detail-image" src="" alt="대표 이미지" class="w-full object-cover max-h-[500px]">
-                </div>
+                <!-- 썸네일 이미지 본문 상단 노출 부분 삭제됨 -->
 
                 <div id="detail-content" class="blog-content text-gray-800 text-lg"></div>
                 
@@ -625,7 +623,9 @@
                 const date = new Date(post.date);
                 document.getElementById('detail-date').innerHTML = `<i class="far fa-clock mr-1"></i> ${date.getFullYear()}년 ${date.getMonth()+1}월 ${date.getDate()}일`;
                 
-                document.getElementById('detail-image').src = post.image;
+                // 썸네일 이미지 연결 코드 주석 처리 (에러 방지)
+                // document.getElementById('detail-image').src = post.image;
+                
                 document.getElementById('detail-content').innerHTML = post.content || `<p>${post.summary}</p>`;
                 
                 // navigate('post-detail') 대신 직접 제어 (URL 덮어쓰기 방지)
