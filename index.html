@@ -511,13 +511,11 @@
         let availableImagesForThumbnail = []; // 썸네일 후보 이미지 목록
         let selectedThumbnailUrl = '';     // 현재 선택된 썸네일 주소
 
-       // --- 1. 데이터베이스 세팅 (LocalStorage 연동) ---
         async function loadPosts() {
             try {
-                const saved = localStorage.getItem('juyeon_posts');
-                if (saved) {
-                    mockPosts = JSON.parse(saved);
-                } else {
+                const response = await fetch('/api/posts');
+                mockPosts = await response.json();
+                if (!mockPosts || mockPosts.length === 0) {
                     mockPosts = DEFAULT_POSTS;
                 }
             } catch (e) {
@@ -533,9 +531,12 @@
 
         async function savePosts() {
             try {
-                localStorage.setItem('juyeon_posts', JSON.stringify(mockPosts));
+                await fetch('/api/posts', {
+                    method: 'POST',
+                    body: JSON.stringify(mockPosts)
+                });
             } catch (e) {
-                alert("저장에 실패했습니다. 브라우저 저장소 용량을 확인해주세요.");
+                alert("저장에 실패했습니다. 인터넷 연결을 확인해주세요.");
             }
         }
 
